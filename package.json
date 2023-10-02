@@ -1,0 +1,61 @@
+{
+	"name": "empmini",
+	"version": "0.0.1",
+	"type": "module",
+	"description": "Enterprise Middle Platform",
+	"keywords": [
+		"EMP Mini"
+	],
+	"author": {
+		"name": "Liu Kehongr"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/cnshsliu/empmini"
+	},
+	"engines": {
+		"node": ">=19.0.0",
+		"npm": ">=8.6.0"
+	},
+	"scripts": {
+		"dev.tsc": "./node_modules/typescript/bin/tsc --watch -p .",
+		"dev.tsc.once": "./node_modules/typescript/bin/tsc -p .",
+		"test": "lab --assert @hapi/code",
+		"start": "shx cp ./README.md src/docs && node build/index.js",
+		"debug": "node --inspect build/index.js",
+		"docs": "./node_modules/docker/docker -w -I -x node_modules -s yes -o ../raindrop-pages "
+	},
+	"dependencies": {
+		"@hapi/accept": "^5.0.2",
+		"@hapi/basic": "^6.0.0",
+		"@hapi/boom": "^9.1.4",
+		"@hapi/code": "^8.0.4",
+		"@hapi/good": "^9.0.1",
+		"@hapi/good-console": "^9.0.1",
+		"@hapi/good-squeeze": "^6.0.0",
+		"@hapi/hapi": "^20.2.1",
+		"@hapi/hoek": "^9.2.1",
+		"@hapi/inert": "^6.0.5",
+		"@hapi/lab": "^24.5.1",
+		"@hapi/podium": "^4.1.3",
+		"@hapi/vision": "^6.1.0",
+		"@hapi/wreck": "^17.1.0",
+		"@mozilla/readability": "^0.4.4",
+		"https-proxy-agent": "^7.0.1",
+		"joi": "^17.10.2",
+		"jsdom": "^22.1.0",
+		"lowdb": "^6.0.1",
+		"mongoose": "^7.5.3",
+		"puppeteer": "^21.3.6",
+		"short-uuid": "^4.2.2"
+	},
+	"private": true,
+	"main": "build/index",
+	"typings": "build/index",
+	"devDependencies": {
+		"@types/hapi__hapi": "^20.0.10",
+		"@types/node": "^18.15.11",
+		"prettier": "^2.6.2",
+		"typescript": "^5.0.4"
+	}
+}
