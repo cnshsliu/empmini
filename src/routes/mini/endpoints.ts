@@ -39,6 +39,24 @@ const internals = {
 				},
 			},
 		},
+		{
+			method: "POST",
+			path: "/caishen/deleteSearchResult",
+			handler: Handlers.DeleteSearchResult,
+			config: {
+				cors: {
+					origin: ["*"],
+					credentials: true,
+					additionalExposedHeaders: ["ETag", "X-Content-Type-Options"],
+				},
+				description: "Get One Search Weixin Result",
+				tags: ["api"],
+				validate: {
+					payload: { url: Joi.string().required() },
+					validator: Joi,
+				},
+			},
+		},
 	],
 };
 

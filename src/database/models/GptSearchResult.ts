@@ -12,6 +12,7 @@ const schema = new Schema(
 		search_uuid: { type: String },
 		query: { type: String },
 		url: { type: String },
+		source: { type: String },
 		content: { type: String },
 		textContent: { type: String },
 		deleted: { type: Boolean, default: false, index: true },

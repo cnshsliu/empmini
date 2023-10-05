@@ -7,6 +7,7 @@ import { GptSearchResult } from "../../database/models/GptSearchResult.js";
 export default {
 	WxSearch: async (req: any, h: ResponseToolkit) => {
 		const PLD = req.payload as any;
+
 		const Searcher = new WxSearch();
 		const search_uuid = suuid.generate();
 		await Searcher.search({ search_uuid, query: PLD.query });
@@ -18,13 +19,20 @@ export default {
 		const PLD = req.payload as any;
 		const date = new Date(PLD.ts);
 
-		// const filter = { createdAt: { $gt: date } };
-		const filter = {};
+		const filter = { updatedAt: { $gt: date } };
 		const ret = await GptSearchResult.findOne(filter, { __v: 0, _id: 0, deleted: 0 }).lean();
 		if (ret) {
 			return h.response(ret);
 		} else {
 			return h.response({ error: "not found" });
 		}
+	},
+
+	DeleteSearchResult: async (req: any, h: ResponseToolkit) => {
+		const PLD = req.payload as any;
+
+		const filter = { url: PLD.url };
+		const ret = await GptSearchResult.deleteMany(filter);
+		return h.response("Done");
 	},
 };
